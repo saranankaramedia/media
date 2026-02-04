@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashorawa'26 | All Island Interschool Photography Competition</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link rel="shortcut icon" type="image/x-icon" href="STCMUM.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    /* --- [DEFINITIVE] Dark Mode CSS Stylesheet --- */
+    :root {
+        --bg-color: #0a0a0a;
+        --surface-color: #1a1a1a;
+        --primary-color: rgb(241, 203, 33);
+        --primary-hover-color: #eba625;
+        --text-color: #e0e0e0;
+        --heading-color: #ffffff;
+        --subtle-text-color: #a0a0a0;
+        --border-color: #2c2c2c;
+        --transition-speed: 0.3s ease;
+    }
+
+    /* --- Base & Approved Sections --- */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+    }
+
+    body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    body::-webkit-scrollbar-track {
+        background: var(--bg-color);
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 10px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    a,
+    button {
+        cursor: pointer;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 0;
+        z-index: 1000;
+        transition: background-color 0.3s ease, padding 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    .header.scrolled {
+        background-color: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--heading-color);
+        text-decoration: none;
+        transition: text-shadow 0.3s;
+    }
+
+    .logo:hover {
+        text-shadow: 0 0 10px var(--primary-color);
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .nav-links li {
+        position: relative;
+    }
+
+    .nav-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        position: relative;
+        z-index: 1;
+        transition: color var(--transition-speed);
+    }
+
+    .nav-links li::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--primary-color);
+        border-radius: 50px;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.4s ease-in-out;
+        z-index: 0;
+    }
+
+    .nav-links li:hover::before {
+        transform: scaleX(1);
+    }
+
+    .nav-links li:hover a {
+        color: #fff;
+    }
+
+    .hamburger {
+        display: none;
+        cursor: pointer;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: var(--heading-color);
+        margin: 5px 0;
+        transition: all var(--transition-speed);
+    }
+
+    #hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #hero::before,
+    #hero::after {
+        content: '';
+        position: absolute;
+        filter: blur(100px);
+        z-index: -1;
+        border-radius: 50%;
+        transition: transform 0.5s ease-out;
+    }
+
+    #hero::before {
+        width: 400px;
+        height: 400px;
+        background: rgba(246, 59, 100, 0.25);
+        top: 10%;
+        left: 10%;
+    }
+
+    #hero::after {
+        width: 350px;
+        height: 350px;
+        background: rgba(231, 178, 2, 0.432);
+        bottom: 15%;
+        right: 15%;
+    }
+
+    @keyframes move-blob-1 {
+        from {
+            transform: translate(0, 0) rotate(0deg);
+        }
+
+        to {
+            transform: translate(100px, 50px) rotate(180deg);
+        }
+    }
+
+    @keyframes move-blob-2 {
+        from {
+            transform: translate(0, 0) rotate(0deg);
+        }
+
+        to {
+            transform: translate(-80px, -40px) rotate(-180deg);
+        }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        color: var(--heading-color);
+        margin-bottom: 1rem;
+    }
+
+    .hero-content h1 span {
+        color: var(--primary-color);
+    }
+
+    .hero-content p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        max-width: 600px;
+        margin: 0 auto 2rem auto;
+        color: var(--subtle-text-color);
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 0.8rem 2rem;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: background-color var(--transition-speed), transform var(--transition-speed);
+        border: none;
+    }
+
+    .btn:hover {
+        background-color: var(--primary-hover-color);
+        transform: translateY(-3px);
+    }
+
+    .section {
+        padding: 7rem 0;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        margin-bottom: 4rem;
+        color: var(--heading-color);
+        font-weight: 600;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .about-content p {
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
+    .about-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    .portfolio-card {
+        background-color: var(--surface-color);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .portfolio-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .portfolio-image {
+        position: relative;
+        height: 250px;
+    }
+
+    .portfolio-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(59, 130, 246, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity var(--transition-speed);
+    }
+
+    .portfolio-card:hover .portfolio-overlay {
+        opacity: 1;
+    }
+
+    .portfolio-view-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        border: 2px solid #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        transform: scale(0.9);
+        transition: transform var(--transition-speed);
+    }
+
+    .portfolio-card:hover .portfolio-view-btn {
+        transform: scale(1);
+    }
+
+    .portfolio-info {
+        padding: 1.5rem;
+    }
+
+    .portfolio-info h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .portfolio-info p {
+        color: var(--subtle-text-color);
+    }
+
+    #posts {
+        background-color: var(--surface-color);
+    }
+
+    .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    .post-card {
+        background-color: var(--bg-color);
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--border-color);
+        transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .post-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .post-card .post-image {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .post-card .post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-speed);
+    }
+
+    .post-card:hover .post-image img {
+        transform: scale(1.05);
+    }
+
+    .post-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .post-category {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        align-self: flex-start;
+    }
+
+    .post-content h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 0.75rem;
+    }
+
+    .post-content .post-excerpt {
+        color: var(--subtle-text-color);
+        line-height: 1.7;
+        flex-grow: 1;
+        margin-bottom: 1.5rem;
+    }
+
+    .post-meta {
+        font-size: 0.8rem;
+        color: var(--subtle-text-color);
+        border-top: 1px solid var(--border-color);
+        padding-top: 1rem;
+    }
+
+    /* --- [DEFINITIVE] Responsive & Creative Team Showcase --- */
+    #team {
+        background-color: var(--bg-color);
+    }
+
+    .leadership-hub {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 3rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        background-color: var(--surface-color);
+        border-radius: 15px;
+        padding: 3rem;
+        border: 1px solid var(--border-color);
+    }
+
+    .hub-image-display {
+        position: relative;
+        width: 100%;
+        height: 450px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .hub-image-display img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .hub-image-display .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        display: flex;
+        align-items: flex-end;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity var(--transition-speed);
+    }
+
+    .hub-image-display:hover .image-overlay {
+        opacity: 1;
+    }
+
+    .image-overlay h3 {
+        font-size: 1.8rem;
+        color: #fff;
+        line-height: 1.2;
+    }
+
+    .hub-controls-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hub-tabs {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .hub-tab {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--subtle-text-color);
+        cursor: pointer;
+        position: relative;
+        padding-left: 2rem;
+        transition: color var(--transition-speed);
+    }
+
+    .hub-tab::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        height: 2px;
+        background-color: var(--border-color);
+        transition: width var(--transition-speed), background-color var(--transition-speed);
+    }
+
+    .hub-tab.active {
+        color: var(--primary-color);
+    }
+
+    .hub-tab.active::before {
+        width: 30px;
+        background-color: var(--primary-color);
+    }
+
+    .hub-content-panels {
+        position: relative;
+        transition: height 0.4s ease; /* <<< STYLE UPDATE HERE for smooth resize */
+    }
+
+    .hub-content-panel {
+        position: absolute;
+        width: 100%;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        /* Removed the incorrect inner box styles */
+    }
+
+    .hub-content-panel.hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+    }
+
+    .hub-content-panel p.title {
+        font-size: 1.2rem;
+        color: var(--heading-color);
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .hub-content-panel .bio {
+        color: var(--text-color);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+
+    .hub-socials {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .hub-socials a {
+        color: var(--subtle-text-color);
+        text-decoration: none;
+        transition: color var(--transition-speed);
+    }
+
+    .hub-socials a:hover {
+        color: var(--primary-color);
+    }
+
+    #cta-section {
+        padding: 8rem 2rem;
+        background-image: url('bg3.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+        position: relative;
+        text-align: center;
+        color: #fff;
+        opacity: 0.3;
+    }
+
+    #cta {
+        background-image: url('bg3.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+        position: relative;
+    }
+
+    #cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 10, 10, 0.7);
+        z-index: 1;
+    }
+
+    #cta .cta-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    #cta-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(10, 10, 10, 0.7);
+        z-index: 1;
+    }
+
+    .cta-content {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .cta-content .cta-subtitle {
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .cta-content .cta-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: var(--heading-color);
+        margin-bottom: 1.5rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .cta-content .cta-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-color);
+        margin-bottom: 2.5rem;
+    }
+
+    #contact {
+        background-color: var(--bg-color);
+    }
+
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    @media(min-width: 992px) {
+        .contact-wrapper {
+            grid-template-columns: 1fr 1.2fr;
+        }
+    }
+
+    .contact-info h3 {
+        font-size: 1.8rem;
+        color: var(--heading-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .contact-details {
+        list-style: none;
+    }
+
+    .contact-details li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-details svg {
+        width: 24px;
+        height: 24px;
+        color: var(--primary-color);
+        flex-shrink: 0;
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--surface-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        color: var(--text-color);
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+    }
+
+    .form-label {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        color: var(--subtle-text-color);
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-input:not(:placeholder-shown) {
+        outline: none;
+        border-color: var(--primary-color);
+    }
+
+    .form-input:focus+.form-label,
+    .form-input:not(:placeholder-shown)+.form-label {
+        top: -0.75rem;
+        left: 0.75rem;
+        font-size: 0.8rem;
+        color: var(--primary-color);
+        background-color: var(--bg-color);
+        padding: 0 0.25rem;
+    }
+
+    textarea.form-input {
+        min-height: 120px;
+    }
+
+    .footer {
+        background-color: #050505;
+        padding: 6rem 0 0 0;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        padding-bottom: 4rem;
+    }
+
+    .footer-col.about-col .footer-logo {
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-logo a {
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .footer-logo svg {
+        width: 60px;
+        height: auto;
+        color: var(--heading-color);
+        transition: color var(--transition-speed);
+    }
+
+    .footer-logo a:hover svg {
+        color: var(--primary-color);
+    }
+
+    .footer-col h4 {
+        font-size: 1.2rem;
+        color: var(--heading-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-col p,
+    .footer-col ul a,
+    .footer-col li {
+        color: var(--subtle-text-color);
+        font-size: 0.9rem;
+    }
+
+    .footer-col ul {
+        list-style: none;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-col ul a {
+        text-decoration: none;
+        transition: color 0.3s, padding-left 0.3s;
+    }
+
+    .footer-col ul a:hover {
+        color: var(--primary-color);
+        padding-left: 5px;
+    }
+
+    .footer-socials {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .footer-socials a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background-color: var(--surface-color);
+        border-radius: 50%;
+        color: var(--subtle-text-color);
+        text-decoration: none;
+        transition: color var(--transition-speed), background-color var(--transition-speed);
+    }
+
+    .footer-socials a:hover {
+        color: #fff;
+        background-color: var(--primary-color);
+    }
+
+    .footer-bottom {
+        background-color: #000;
+        padding: 1.5rem 0;
+        text-align: center;
+        color: var(--subtle-text-color);
+        font-size: 0.9rem;
+    }
+
+    .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-color);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: opacity 0.4s, visibility 0.4s, transform 0.4s;
+        z-index: 100;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* --- Responsive Styles --- */
+    @media(max-width: 992px) {
+        .leadership-hub {
+            grid-template-columns: 1fr;
+        }
+
+        .hub-image-display {
+            height: 300px;
+            margin-bottom: 2rem;
+        }
+    }
+
+    @media(max-width: 768px) {
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: var(--surface-color);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            transition: right 0.5s ease-in-out;
+        }
+
+        .nav-links.nav-active {
+            right: 0;
+        }
+
+        .hamburger {
+            display: block;
+            z-index: 1001;
+        }
+
+        .toggle .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .toggle .line2 {
+            opacity: 0;
+        }
+
+        .toggle .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .about-grid,
+        .contact-wrapper {
+            grid-template-columns: 1fr;
+        }
+
+        /* Leadership Showcase Mobile Adjustments */
+        .leadership-hub {
+            padding: 2rem 1.5rem;
+            /* Reduced padding for mobile */
+        }
+
+        .hub-content-panels {
+            min-height: auto;
+            /* Allow content to dictate the height */
+        }
+
+        .hub-content-panel .bio {
+            font-size: 0.9rem;
+            /* Slightly smaller bio font for readability */
+            line-height: 1.8;
+        }
+
+        .hub-image-display {
+            height: 320px;
+        }
+
+        /* Footer copyright text responsiveness */
+        .footer-bottom p {
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+    }
+    
+    /* --- Advanced Popup Modal Styles --- */
+    .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .popup-overlay.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .popup-card-advanced {
+        background-color: var(--surface-color);
+        border-radius: 12px;
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        transform: translateY(-30px) scale(0.95);
+        opacity: 0;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    }
+
+    .popup-overlay.visible .popup-card-advanced {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    .popup-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        color: rgba(255,255,255,0.7);
+        cursor: pointer;
+        transition: color var(--transition-speed), transform var(--transition-speed);
+        z-index: 10;
+        line-height: 1;
+    }
+
+    .popup-close:hover {
+        color: #fff;
+        transform: rotate(90deg);
+    }
+    
+    .popup-banner {
+        background-image: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.6)), url('bg3.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .popup-logo {
+        max-width: 180px;
+        height: auto;
+    }
+
+    .popup-content {
+        padding: 2.5rem;
+        text-align: center;
+    }
+
+    .popup-content h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--heading-color);
+        margin-bottom: 0.5rem;
+    }
+    
+    .popup-subtitle {
+        color: var(--primary-color);
+        font-weight: 500;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .popup-description {
+        color: var(--subtle-text-color);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+    
+    .countdown-timer {
+        background-color: var(--bg-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border: 1px solid var(--border-color);
+    }
+    
+    .countdown-timer p {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        color: var(--subtle-text-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .timer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+    
+    .timer-unit {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .timer-unit span {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--heading-color);
+        line-height: 1;
+    }
+    
+    .timer-unit label {
+        font-size: 0.8rem;
+        color: var(--subtle-text-color);
+    }
+
+    .popup-content .btn {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    /* Mobile View Adjustments */
+    @media (max-width: 576px) {
+        .popup-card-advanced {
+            width: 95%;
+        }
+
+        .popup-content {
+            padding: 1.5rem;
+        }
+
+        .popup-logo {
+            max-width: 150px;
+        }
+
+        .popup-content h2 {
+            font-size: 2rem;
+        }
+
+        .popup-subtitle {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .popup-description {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .countdown-timer {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timer-unit span {
+            font-size: 2rem;
+        }
+        
+        .timer-unit label {
+            font-size: 0.7rem;
+        }
+
+        .popup-content .btn {
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<body>
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="#hero" class="logo" aria-label="Media Unit Home">
+                <img src="logo.png" alt="Media Unit Logo" style="height:44px;vertical-align:middle;">
+
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li>
+                    <a href="#hero">Home</a>
+                </li>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#work">Work</a>
+                </li>
+                <li>
+                    <a href="#posts">Posts</a>
+                </li>
+                <li>
+                    <a href="#team">Team</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+
+            <div class="hamburger" id="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container hero-content">
+                <h1 class="fade-in">
+                    The Media Unit of <br>
+                    <span>Sri Saranankara National School</span>
+                </h1>
+                <p class="fade-in">
+                    Capturing Moments, Creating Memories. The official storytellers of Sri Saranankara National School, Bingiriya.
+                </p>
+                </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">Who We Are</h2>
+                <div class="about-grid">
+                    <div class="about-image fade-in">
+                        <img src="logom.png" alt="Media Unit Team in action">
+                    </div>
+                    <div class="about-content fade-in">
+                        <h3>A Passion for Storytelling</h3>
+                        <p>
+                            The Media Unit is a student-led organization dedicated to chronicling the life and spirit of our college. We are photographers, videographers, writers, and designers who believe in the power of media to connect and inspire our community.
+                        </p>
+                        <p>
+                            From thrilling sports events to prestigious academic ceremonies, we provide comprehensive coverage to ensure no significant moment is forgotten.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">Our Portfolio</h2>
+                <div class="portfolio-grid fade-in">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="p1.jpg" alt="Project One">
+                            <div class="portfolio-overlay">
+                                <a href="https://www.facebook.com/share/p/1MgBRSG1Vw/" class="portfolio-view-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M10.5 7.5L16.5 12L10.5 16.5" />
+                                    </svg>
+                                    View Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Annual Big Match</h3>
+                            <p>Event Coverage</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="p2.jpg" alt="Project Two">
+                            <div class="portfolio-overlay">
+                                <a href="https://www.facebook.com/share/p/1BFCWBUNys/" class="portfolio-view-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M10.5 7.5L16.5 12L10.5 16.5" />
+                                    </svg>
+                                    View Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Prefects’ Investiture Ceremony 2025</h3>
+                            <p>Photography</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="p3.jpg" alt="Project Three">
+                            <div class="portfolio-overlay">
+                                <a href="https://www.facebook.com/share/p/1D918kNjE4/" class="portfolio-view-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M10.5 7.5L16.5 12L10.5 16.5" />
+                                    </svg>
+                                    View Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Central Province School Games 2024 </h3>
+                            <p>Event Coverage</p>
+                        </div>
+                    </div>
+                <div style="grid-column: 1 / -1; text-align: center; margin-top: 2rem;">
+                    <a href="https://www.facebook.com/stcmum" class="btn fade-in">View More Events</a>
+                </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="posts" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">News & Updates</h2>
+                <div class="posts-grid fade-in">
+                    <div class="post-card">
+                        <div class="post-image">
+                            <img src="s1.png" alt="Post 1">
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category">Event</span>
+                            <h3>Childrens' Day</h3>
+                            <p class="post-excerpt">
+                                TCelebrating the joy, innocence, and endless wonder of childhood. Happy Children's Day!
+                            </p>
+                            <div class="post-meta">By Media Unit on OCt 01, 2025</div>
+                        </div>
+                    </div>
+                    <div class="post-card">
+                        <div class="post-image">
+                            <img src="s2.jpg" alt="Post 2">
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category">Announcement</span>
+                            <h3>Sri Saranankara National School, Matale are the CHAMPIONS!🏆🏑</h3>
+                            <p class="post-excerpt">
+                                
+
+We are incredibly proud to announce that our talented hockey team has been crowned the Champions of the Saints Schools Hockey 9's Tournament!
+                            </p>
+                            <div class="post-meta">By Media Unit on Sep 28, 2025</div>
+                        </div>
+                    </div>
+                    <div class="post-card">
+                        <div class="post-image">
+                            <img src="bg2.jpg" alt="Post 3">
+                        </div>
+                        <div class="post-content">
+                            <span class="post-category">Event</span>
+                            <h3>YAshorawa'𝟐6— All Island Interschool Photography Competition</h3>
+                            <p class="post-excerpt">
+                                Not all eyes see the same... 👁️✨
+Some see what’s in front, 
+Others see what lies beyond. 
+Through the silence, the static, the blur — a vision...
+                            </p>
+                            <div class="post-meta">By Media Unit on Jul 28, 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="team" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">Leadership Showcase</h2>
+                <div class="leadership-hub fade-in">
+                    <div class="hub-image-display" id="team-image-display">
+                        </div>
+                    <div class="hub-controls-content">
+                        <div class="hub-tabs" id="team-tabs">
+                            </div>
+                        <div class="hub-content-panels" id="team-content-panels">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="section">
+            <div class="container">
+                <div class="cta-content fade-in">
+                    <p class="cta-subtitle">Become a Part of the Story</p>
+                    <h2 class="cta-title">Join The Media Unit</h2>
+                    <p class="cta-description">
+                        We are always looking for passionate students to join our team. If you have a flair for creativity, a love for media, and a desire to tell the stories of our college, we want to hear from you.
+                    </p>
+                    <a href="#contact" class="btn">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">Contact Us</h2>
+                <div class="contact-wrapper fade-in" style="align-items: center;">
+                    <div class="contact-info">
+                        <h3>Let's Create Together</h3>
+                        <p>Have a question or a project in mind? We'd love to hear from you. Reach out to us directly or fill out the form.</p>
+                        <ul class="contact-details">
+                            <li>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <span>thomiansmedia.us</span>
+                            </li>
+                            <li>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <span>Sri Saranankara National School, Matale, Sri Lanka</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <form action="#" style="align-self: center; width: 100%; max-width: 450px;">
+                        <div class="form-group">
+                            <input type="text" id="name" class="form-input" placeholder=" " required>
+                            <label for="name" class="form-label">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" class="form-input" placeholder=" " required>
+                            <label for="email" class="form-label">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" class="form-input" placeholder=" " required></textarea>
+                            <label for="message" class="form-label">Your Message</label>
+                        </div>
+                        <button type="submit" class="btn" style="align-self: flex-start;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col about-col">
+                    <div class="footer-logo">
+                        <a href="#hero" aria-label="Back to top">
+                            <img src="logo.png" alt="Media Unit Logo" style="height:44px;vertical-align:middle;">
+
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M49.1,79.3C53,58.1,68.2,42.8,89.4,39c21.2-3.8,43.2,7.7,50.9,28.9c7.7,21.2-3.8,43.2-25,50.9s-43.2-7.7-50.9-28.9C59.6,79.1,54.9,79.5,49.1,79.3z M66.9,88.2c-2.4,13.3,4.7,26.7,18,29.1c13.3,2.4,26.7-4.7,29.1-18c2.4-13.3-4.7-26.7-18-29.1C82.7,67.8,69.3,74.9,66.9,88.2z M100,0L100,0C44.8,0,0,44.8,0,100v0c0,55.2,44.8,100,100,100h0c55.2,0,100-44.8,100-100v0C200,44.8,155.2,0,100,0z M100,180L100,180c-44.2,0-80-35.8-80-80v0c0-44.2,35.8-80,80-80h0c44.2,0,80,35.8,80,80v0C180,144.2,144.2,180,100,180z" fill="currentColor" />
+                            </svg>
+                        </a>
+                    </div>
+                    <p>The official student-run Media Unit of Sri Saranankara National School, Matale. Capturing the moments that define our story.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li>
+                            <a href="#work">Work</a>
+                        </li>
+                        <li>
+                            <a href="#posts">Posts</a>
+                        </li>
+                        <li>
+                            <a href="#team">Team</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            <a href="index.php" style="display: flex; align-items: center; gap: 0.5rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72" />
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72" />
+                                </svg>
+                                thomiansmedia.us
+                            </a>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            thomiansmedia.us@gmail.com
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/stcmum" style="display: flex; align-items: center; gap: 0.5rem;">
+                                <svg fill="currentColor" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M9.198 21.5h4v-8.01h2.667l.267-3.334H13.198V7.91c0-.85.2-1.333 1.334-1.333h1.533V3.5h-2.5C10.45 3.5 9.198 4.79 9.198 7.334v2.833H6.865v3.334h2.333V21.5z" />
+                                </svg>
+                                facebook.com/stcmum
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/stcmum/" style="display: flex; align-items: center; gap: 0.5rem;">
+                                <svg fill="currentColor" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.25 1.217.598 1.77.1.554.554.9.11 1.15.66.248.638.415 1.363.465 2.428.05 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.15 1.77c-.554.554-1.11.9-1.77 1.15-.638.248-1.362.415-2.428.465-1.066.05-1.405.06-4.122.06s-3.056-.01-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.883 4.883 0 01-1.77-1.15c-.554-.554-.9-1.11-1.15-1.77-.248-.638-.415-1.362-.465-2.428C2.01 15.056 2 14.717 2 12s.01-3.056.06-4.122c.05-1.066.217-1.79.465-2.428.25-.66.598-1.217 1.15-1.77.554-.554 1.11-.9 1.77-1.15.638-.248 1.362-.415 2.428-.465C8.944 2.01 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm6.406-11.845a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" />
+                                </svg>
+                                instagram.com/stcmum
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/stcmum" aria-label="Facebook"><svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+                                <path d="M9.198 21.5h4v-8.01h2.667l.267-3.334H13.198V7.91c0-.85.2-1.333 1.334-1.333h1.533V3.5h-2.5C10.45 3.5 9.198 4.79 9.198 7.334v2.833H6.865v3.334h2.333V21.5z" />
+                            </svg></a>
+                        <a href="https://www.instagram.com/stcmum/" aria-label="Instagram"><svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+                                <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.25 1.217.598 1.77.1.554.554.9.11 1.15.66.248.638.415 1.363.465 2.428.05 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.15 1.77c-.554.554-1.11.9-1.77 1.15-.638.248-1.362.415-2.428.465-1.066.05-1.405.06-4.122.06s-3.056-.01-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.883 4.883 0 01-1.77-1.15c-.554-.554-.9-1.11-1.15-1.77-.248-.638-.415-1.362-.465-2.428C2.01 15.056 2 14.717 2 12s.01-3.056.06-4.122c.05-1.066.217-1.79.465-2.428.25-.66.598-1.217 1.15-1.77.554-.554 1.11-.9 1.77-1.15.638-.248 1.362-.415 2.428-.465C8.944 2.01 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm6.406-11.845a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" />
+                            </svg></a>
+                        <a href="https://www.youtube.com/@ThomiansMedia" aria-label="YouTube"><svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+                                <path d="M21.582 6.186A2.233 2.233 0 0020.13 4.738a29.123 29.123 0 00-8.13-1.238c-2.733 0-5.46.34-8.13 1.238A2.232 2.232 0 002.418 6.186C2.083 7.6 1.915 9.76 1.915 12s.168 4.4.503 5.814a2.232 2.232 0 001.452 1.448c2.67.898 5.4 1.238 8.13 1.238 2.734 0 5.46-.34 8.13-1.238a2.233 2.233 0 001.452-1.448C21.917 16.4 22.085 14.24 22.085 12s-.168-4.4-.503-5.814zM9.915 15.5V8.5l6 3.5-6 3.5z" />
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+         <p>&copy; 2025 The Media Unit Sri Saranankara National School, Bingiriya. All Rights Reserved.</p>
+            <p>Website designed by <strong>Saranankara'</strong> Media.</p>
+        </div>
+    </footer>
+    <style>
+
+    </style>
+    </div>
+    <a href="#hero" class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg></a>
+        
+    <div id="eventPopup" class="popup-overlay">
+        <div class="popup-card-advanced">
+            <span class="popup-close" id="closePopup">&times;</span>
+            <div class="popup-banner">
+                <img src="logo.png" alt="Sri Saranankara National School Media Unit Logo" class="popup-logo">
+            </div>
+            <div class="popup-content">
+                <h2>Thidasraawa '25</h2>
+                <p class="popup-subtitle">All-Island Trilingual Media Competition</p>
+                <p class="popup-description">Registrations are officially open! Showcase your skills in photography, videography, announcing, and more. Compete with the best young media talents from across Sri Lanka.</p>
+                <div class="countdown-timer" id="countdownTimer">
+                    <p>Registration closes in:</p>
+                    <div class="timer-grid">
+                        <div class="timer-unit">
+                            <span id="days">00</span>
+                            <label>Days</label>
+                        </div>
+                        <div class="timer-unit">
+                            <span id="hours">00</span>
+                            <label>Hours</label>
+                        </div>
+                        <div class="timer-unit">
+                            <span id="minutes">00</span>
+                            <label>Mins</label>
+                        </div>
+                        <div class="timer-unit">
+                            <span id="seconds">00</span>
+                            <label>Secs</label>
+                        </div>
+                    </div>
+                </div>
+                 <a href="https://thomiansmedia.us/Thidasraawa#register" class="btn" target="_blank" rel="noopener noreferrer">Register Now</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Base Scripts ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
+        });
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                }
+            });
+        });
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                else {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            window.scrollY > 400 ? backToTopButton.classList.add('visible') : backToTopButton.classList.remove('visible');
+        });
+        const heroContent = document.querySelector('.hero-content');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY < window.innerHeight) {
+                heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+            }
+        });
+
+        // --- [DEFINITIVE] Interactive Team Showcase Logic ---
+        const teamData = [{
+                id: 'President',
+                name: "President",
+                title: "Induranga Dulshan",
+                image: "president.png",
+                bio: "As President, they are responsible for providing strategic direction and strong leadership to the team. With a discerning eye for talent and a deep commitment to media excellence, they ensure that every project is executed to the highest professional standards."
+            },
+            {
+                id: 'VicePresident',
+                name: "Vice President",
+                title: "Isuru Arambepola",
+                image: "isuruss.jpg",
+                bio: "The driving force and second-in-command of our unit.The Vice President works alongside the President to turn creative vision into reality, overseeing project execution and mentoring team members to ensure our ambitious goals are met with excellence."
+            },
+            {
+                id: 'Secretary',
+                name: "Secretary",
+                title: "Vidul Semika",
+                image: "https://via.placeholder.com/400x500/c/fff?text=HoP",
+                bio: "The organizational powerhouse of our unit. The Secretary manages all internal and external communications, schedules, and project timelines, ensuring that our creative endeavors run smoothly and efficiently from start to finish."
+            },
+             {
+                id: 'Treasurer',
+                name: "Treasurer",
+                title: "Dimantha Malwenna",
+                image: "https://via.placeholder.com/400x500/c/fff?text=HoP",
+                bio: "The guardian of our financial health. The Treasurer oversees the unit's budget, manages all transactions, and provides strategic financial planning, ensuring our resources are used effectively to bring our most ambitious projects to life."
+            }
+            
+        ];
+
+        const imageDisplay = document.getElementById('team-image-display');
+        const tabsContainer = document.getElementById('team-tabs');
+        const contentContainer = document.getElementById('team-content-panels');
+
+        // === JAVASCRIPT UPDATE START ===
+        // Function to dynamically set the height of the content panel container
+        const setContentHeight = () => {
+            const activePanel = contentContainer.querySelector('.hub-content-panel:not(.hidden)');
+            if (activePanel) {
+                // Set the container height to the scroll height of the active panel
+                contentContainer.style.height = `${activePanel.scrollHeight}px`;
+            }
+        };
+
+        teamData.forEach((member, index) => {
+            const tab = document.createElement('div');
+            tab.className = 'hub-tab';
+            tab.setAttribute('data-tab', member.id);
+            tab.textContent = member.name;
+            tabsContainer.appendChild(tab);
+
+            const contentPanel = document.createElement('div');
+            contentPanel.className = 'hub-content-panel';
+            contentPanel.setAttribute('data-tab', member.id);
+            contentPanel.innerHTML = `
+                <p class="title">${member.title}</p>
+                <p class="bio">${member.bio}</p>
+                <div class="hub-socials">
+                </div>
+            `;
+            contentContainer.appendChild(contentPanel);
+
+            if (index === 0) {
+                tab.classList.add('active');
+                imageDisplay.innerHTML = `
+                    <img src="${member.image}" alt="${member.name}">
+                    <div class="image-overlay"><h3>${member.name}</h3></div>
+                `;
+            } else {
+                contentPanel.classList.add('hidden');
+            }
+        });
+
+        tabsContainer.querySelectorAll('.hub-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetId = tab.getAttribute('data-tab');
+                if (tab.classList.contains('active')) return;
+
+                tabsContainer.querySelector('.active').classList.remove('active');
+                tab.classList.add('active');
+
+                const member = teamData.find(m => m.id === targetId);
+                imageDisplay.innerHTML = `
+                    <img src="${member.image}" alt="${member.name}">
+                    <div class="image-overlay"><h3>${member.name}</h3></div>
+                `;
+
+                contentContainer.querySelectorAll('.hub-content-panel').forEach(panel => {
+                    panel.classList.toggle('hidden', panel.getAttribute('data-tab') !== targetId);
+                });
+                // Update height after content changes
+                setContentHeight();
+            });
+        });
+
+        // Set the initial height when the page loads
+        window.addEventListener('load', setContentHeight);
+        // Recalculate height if window is resized (e.g., orientation change on mobile)
+        window.addEventListener('resize', setContentHeight);
+        // === JAVASCRIPT UPDATE END ===
+
+        // --- Advanced Event Popup Logic ---
+        const eventPopup = document.getElementById('eventPopup');
+        const closePopup = document.getElementById('closePopup');
+
+        const showPopup = () => {
+            eventPopup.classList.add('visible');
+        };
+
+        const hidePopup = () => {
+            eventPopup.classList.remove('visible');
+        };
+
+        window.addEventListener('load', () => {
+            setTimeout(showPopup, 1500);
+        });
+
+        closePopup.addEventListener('click', hidePopup);
+        eventPopup.addEventListener('click', (e) => {
+            if (e.target === eventPopup) {
+                hidePopup();
+            }
+        });
+
+        // Countdown Timer Logic
+        // Set the date we're counting down to
+        const countDownDate = new Date("Oct 12, 2025 07:59:59").getTime();
+
+        const countdownFunction = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Add leading zeros if number is less than 10
+            const formatTime = (time) => time < 10 ? `0${time}` : time;
+
+            // Display the result in the elements, only if they exist
+            if(document.getElementById("days")) {
+             document.getElementById("days").innerText = formatTime(days);
+             document.getElementById("hours").innerText = formatTime(hours);
+             document.getElementById("minutes").innerText = formatTime(minutes);
+             document.getElementById("seconds").innerText = formatTime(seconds);
+            }
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                const countdownTimerEl = document.getElementById("countdownTimer");
+                if(countdownTimerEl) {
+                 countdownTimerEl.innerHTML = "<p style='font-size:1.2rem; color: var(--primary-color);'>Registrations are now closed.</p>";
+                }
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
