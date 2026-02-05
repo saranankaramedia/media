@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saranankara Media Society</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" type="image/x-icon" href="STCMUM.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --surface-color: #1a1a1a;
+            --primary-color: #f6d43b;
+            --primary-hover-color: #eb2525;
+            --secondary-color: #f65c5c;
+            --text-color: #e0e0e0;
+            --heading-color: #ffffff;
+            --subtle-text-color: #a0a0a0;
+            --border-color: #2c2c2c;
+            --transition-speed: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Header --- */
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+        }
+
+        .header.scrolled {
+            position: fixed;
+            background-color: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100px;
+        }
+
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1.0);
+                background-position: center center;
+            }
+            100% {
+                transform: scale(1.2);
+                background-position: right left;
+            }
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background-image: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), var(--hero-bg-image);
+            background-size: cover;
+            background-position: center;
+            animation: kenburns 20s infinite alternate;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #hero.background-fading::before {
+            opacity: 0;
+        }
+
+        .hero-content {
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content .subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .hero-content h1 .gradient-text {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content .description {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+            color: var(--subtle-text-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.9rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover-color);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        /* --- Countdown Section --- */
+
+        #countdown {
+            padding: 6rem 0;
+            background-color: var(--surface-color);
+        }
+
+        .countdown-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 4rem auto 0;
+        }
+
+        .countdown-box {
+            background-color: var(--bg-color);
+            padding: 2.5rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .countdown-box h2 {
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            color: var(--heading-color);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .countdown-box p {
+            color: var(--subtle-text-color);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- General Section Styling --- */
+
+        .section {
+            padding: 6rem 0;
+            overflow: hidden;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+            color: var(--heading-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--subtle-text-color);
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+        }
+
+        /* --- Advanced Competition Categories Section --- */
+
+        #categories {
+            background-color: var(--surface-color);
+        }
+
+        .categories-showcase {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            min-height: 600px;
+        }
+
+        .category-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .category-nav-btn {
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--subtle-text-color);
+            cursor: pointer;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .category-nav-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: width var(--transition-speed);
+        }
+
+        .category-nav-btn.active {
+            color: var(--heading-color);
+        }
+
+        .category-nav-btn.active::after {
+            width: 100%;
+        }
+
+        .category-content-display {
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            padding: 4rem;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            transition: background-image 0.8s ease;
+        }
+
+        .category-content-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.1));
+        }
+
+        .category-content {
+            position: relative;
+            z-index: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .category-content.fade-out {
+            opacity: 0;
+        }
+
+        .category-content h3 {
+            font-size: 2.5rem;
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .category-content p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+
+        .skills-list {
+            display: flex;
+            gap: 0.75rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .skills-list li {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--heading-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- How to Register --- */
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .step-card {
+            background-color: var(--surface-color);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .step-icon {
+            display: inline-flex;
+            width: 70px;
+            height: 70px;
+            background-color: var(--bg-color);
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .step-card h3 {
+            font-size: 1.3rem;
+            color: var(--heading-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p {
+            color: var(--subtle-text-color);
+            line-height: 1.7;
+        }
+
+        /* --- Advanced Registration Form --- */
+
+        .registration-container {
+            background-color: var(--surface-color);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 1.8rem;
+            text-align: left;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            appearance: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .form-input[type="file"] {
+            padding-top: 1.3rem;
+        }
+
+        .form-select {
+            padding-right: 3rem;
+            cursor: pointer;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '▼';
+            font-size: 0.8rem;
+            color: var(--subtle-text-color);
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .form-label {
+            position: absolute;
+            top: 1rem;
+            left: 3rem;
+            color: var(--subtle-text-color);
+            pointer-events: none;
+            transition: all 0.3s ease;
+            /* Added for truncation on small screens */
+            max-width: calc(100% - 4rem);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .icon {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            color: var(--subtle-text-color);
+            transition: color 0.3s;
+        }
+
+        .form-input:focus,
+        .form-input:not(:placeholder-shown),
+        .form-select:focus,
+        .form-select:not([value=""]) {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-input:focus+.form-label,
+        .form-input:not(:placeholder-shown)+.form-label,
+        .form-select:focus+.form-label,
+        .form-select:not([value=""])+.form-label {
+            top: -0.75rem;
+            left: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            background-color: var(--surface-color);
+            padding: 0 0.25rem;
+            max-width: 100%;
+            /* Allow full width when moved up */
+        }
+
+        .form-input:focus~.icon,
+        .form-select:focus~.icon {
+            color: var(--primary-color);
+        }
+
+        #register .btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .checkbox-control {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+
+        .checkbox-control input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .checkbox-label {
+            font-size: 0.9rem;
+            color: var(--subtle-text-color);
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .checkbox-label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .checkbox-label::after {
+            content: '✔';
+            position: absolute;
+            left: 3px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            color: var(--primary-color);
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .checkbox-control input:checked+.checkbox-label::before {
+            border-color: var(--primary-color);
+        }
+
+        .checkbox-control input:checked+.checkbox-label::after {
+            transform: translateY(-50%) scale(1);
+        }
+
+        #success-message {
+            text-align: center;
+            padding: 3rem;
+            background-color: var(--bg-color);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            display: none;
+        }
+
+        #success-message h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* --- FAQ Section --- */
+
+        #faq {
+            background-color: var(--surface-color);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--heading-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--subtle-text-color);
+            line-height: 1.8;
+        }
+
+        /* --- Footer --- */
+
+        .footer {
+            background-color: #050505;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer .logo img {
+            height: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer p {
+            color: var(--subtle-text-color);
+            font-size: 0.9rem;
+        }
+
+        .footer p a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer p a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Fix for File Input Floating Labels */
+
+        .form-input[type="file"]+.form-label {
+            top: -0.75rem;
+            left: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--subtle-text-color);
+            background-color: var(--surface-color);
+            padding: 0 0.25rem;
+        }
+
+        .form-input[type="file"]:focus+.form-label {
+            color: var(--primary-color);
+        }
+
+        /* --- NEW STYLES FOR RESPONSIVE FORM --- */
+
+        .form-section-heading {
+            text-align: left;
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        .form-section-heading:first-of-type {
+            margin-top: 0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* --- Upload Loader --- */
+
+        #upload-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            flex-direction: column;
+            gap: 1.5rem;
+            color: var(--heading-color);
+            font-size: 1.1rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--border-color);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- Success Message Content --- */
+
+        .whatsapp-join-section {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .whatsapp-join-section h4 {
+            font-size: 1.2rem;
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-join-section p {
+            color: var(--subtle-text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .whatsapp-join-section .btn {
+            background-color: #25D366;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .whatsapp-join-section .btn:hover {
+            background-color: #1DA851;
+            /* Darker green for hover */
+        }
+
+        /* --- RESPONSIVENESS --- */
+
+        @media(max-width: 992px) {
+            .categories-showcase {
+                grid-template-columns: 1fr;
+            }
+            .category-nav {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-bottom: 2rem;
+            }
+            .category-nav-btn {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .countdown-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .registration-container {
+                padding: 2rem;
+            }
+            #success-message {
+                padding: 2rem 1.5rem;
+            }
+            .whatsapp-join-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .whatsapp-join-section p {
+                margin-bottom: 0.5rem;
+            }
+            .whatsapp-join-section .btn {
+                width: 90%;
+                padding: 0.9rem 1rem;
+                font-size: 1rem;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Upload Loader HTML -->
+    <div id="upload-loader">
+        <div class="spinner"></div>
+        <p>Uploading Assets, Please Wait...</p>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="index.php" class="logo" aria-label="Media Unit Home"><img src="logo.PNG" alt="Media Unit Logo"></a>
+            <a href="index.php" style="color: var(--subtle-text-color); text-decoration: none;">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="hero">
+            <div class="hero-content">
+                <p class="subtitle">SRI SARANANKARA NATIONAL SCHOOL MEDIA UNIT PRESENTS</p>
+                <h1><span class="gradient-text">YASHORAWA '25</span></h1>
+                <p class="description"> All Island Interschool Photography Competition! Join us for a full day of creative challenges and intense competition. Unleash your talent and creativity.
+                </p>
+                <a href="#register" class="btn">School Registration</a>
+            </div>
+        </section>
+
+        <section id="countdown" class="section">
+            <div class="container">
+                <h2 class="section-title">The Countdown Has Begun</h2>
+                <p class="section-subtitle">Join us as we count down to the most anticipated media event of the year. Mark your calendars!</p>
+                <div class="countdown-container">
+                    <div class="countdown-box">
+                        <h2 id="countdown-days">00</h2>
+                        <p>Days</p>
+                    </div>
+                    <div class="countdown-box">
+                        <h2 id="countdown-hours">00</h2>
+                        <p>Hours</p>
+                    </div>
+                    <div class="countdown-box">
+                        <h2 id="countdown-minutes">00</h2>
+                        <p>Minutes</p>
+                    </div>
+                    <div class="countdown-box">
+                        <h2 id="countdown-seconds">00</h2>
+                        <p>Seconds</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="categories" class="section">
+            <div class="container">
+                <h2 class="section-title">The Arena of Skills</h2>
+                <p class="section-subtitle">Showcase your skills in Ten exciting and challenging categories. Compete with the best and prove your mettle.</p>
+                <div class="categories-showcase">
+                    <nav class="category-nav" id="category-nav"></nav>
+                    <div class="category-content-display" id="category-display">
+                        <div class="category-content" id="category-content"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to" class="section">
+            <div class="container">
+                <h2 class="section-title">Three Steps to Glory</h2>
+                <p class="section-subtitle">Follow these easy steps to secure your spot at Yashorawa '25.</p>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg></div>
+                        <h3>1. Fill The Form</h3>
+                        <p>register your school by providing all the necessary details in the form below.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 2L11 13"></path>
+                                <path d="M22 2L15 22l-4-9-9-4 21-5z"></path>
+                            </svg></div>
+                        <h3>2. Submit Your Entry</h3>
+                        <p>Agree to the terms and hit "Register Now" to send us your application.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                </path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                <path d="m9 14 2 2 4-4"></path>
+                            </svg></div>
+                        <h3>3. Join WhatsApp Group</h3>
+                        <p>Join our WhatsApp group for updates and announcements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="section">
+            <div class="container">
+                <div class="registration-container">
+                    <div id="registration-form-content">
+                        <h2 class="section-title" style="margin-bottom: 2.5rem;">Official School Registration Form</h2>
+                        <form id="event-form">
+
+                            <h4 class="form-section-heading">School & Photography society Details</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <input type="text" id="school" name="school" class="form-input" placeholder=" "><label for="school" class="form-label">School Name</label><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="media_unit_name" name="media_unit_name" class="form-input" placeholder=" "><label for="media_unit_name" class="form-label">Name of the Media Unit</label><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                                <div class="form-group full-width">
+                                    <input type="text" id="school_address" name="school_address" class="form-input" placeholder=" "><label for="school_address" class="form-label">School Address</label><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="form-group full-width">
+                                    <input type="email" id="media_unit_email" name="media_unit_email" class="form-input" placeholder=" "><label for="media_unit_email" class="form-label">Media Unit Email Address</label><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <h4 class="form-section-heading">Contact Information</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <input type="text" id="teacher_name" name="teacher_name" class="form-input" placeholder=" "><label for="teacher_name" class="form-label">Name of the Teacher in Charge</label><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" id="teacher_contact" name="teacher_contact" class="form-input" maxlength="10" placeholder=" " oninput="this.value = this.value.replace(/[^0-9]/g, '')"><label for="teacher_contact" class="form-label">Teacher in Charge's Contact</label>
+                                    <svg
+                                        class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                        </svg>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="president_name" name="president_name" class="form-input" placeholder=" "><label for="president_name" class="form-label">Name of the President</label><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" id="president_contact" name="president_contact" class="form-input" maxlength="10" placeholder=" " oninput="this.value = this.value.replace(/[^0-9]/g, '')"><label for="president_contact" class="form-label">President's Contact Number</label>
+                                    <svg
+                                        class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                        </svg>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="coordinator_name" name="coordinator_name" class="form-input" placeholder=" "><label for="coordinator_name" class="form-label">Name of the Coordinator</label><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" id="coordinator_contact" name="coordinator_contact" class="form-input" maxlength="10" placeholder=" " oninput="this.value = this.value.replace(/[^0-9]/g, '')"><label for="coordinator_contact" class="form-label">Coordinator's Contact Number</label>
+                                    <svg
+                                        class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                        </svg>
+                                </div>
+                            </div>
+
+                            <!-- <h4 class="form-section-heading">Assets Upload</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <input type="file" id="school_crest" name="school_crest" class="form-input" placeholder=" " accept="image/jpeg, image/png" ><label for="school_crest" class="form-label">School Crest (JPG/PNG)</label><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="form-group">
+                                    <input type="file" id="media_unit_logo" name="media_unit_logo" class="form-input" placeholder=" " accept="image/jpeg, image/png" ><label for="media_unit_logo" class="form-label">Media Unit Logo (JPG/PNG)</label><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                </div>
+                            </div> -->
+
+                            <label class="checkbox-control"><input type="checkbox" id="terms" name="terms" ><span class="checkbox-label">I agree to the terms and conditions of the event.</span></label>
+                            <button type="submit" class="btn">Register Now</button>
+                        </form>
+                    </div>
+                    <div id="success-message">
+                        <h3>Thank You!</h3>
+                        <p>Your registration for Yashorawa '25 has been successfully submitted. Our team will review it and contact you shortly with confirmation and further details.</p>
+                        <style>
+                            /* Blue Contestant button */
+
+                            .whatsapp-join-section .btn.contestant-btn {
+                                background-color: #007BFF;
+                                margin-top: 10px;
+                            }
+
+                            .whatsapp-join-section .btn.contestant-btn:hover {
+                                background-color: #0069d9;
+                            }
+                        </style>
+
+                        <div class="whatsapp-join-section">
+                            <h4>Don't Miss Any Updates!</h4>
+                            <p>Join our official WhatsApp group to receive important announcements and reminders directly.</p>
+
+                            <a href="https://chat.whatsapp.com/HKYWiVAEXfgGwhKqM8JNa5" class="btn" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479s1.065 2.871 1.213 3.07c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.414z"/>
+        </svg>
+        Join Now
+    </a>
+
+                            <a href="https://thomiansmedia.us/arena.php" class="btn contestant-btn" target="_blank">
+        
+       Click For Contestant Registration 
+    </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Have questions? We've got answers. Here are some common queries about the event.
+                </p>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question"><span>When is the final day for schools to register for the competition?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-answer">
+                            <p>The deadline for all school registrations is <strong>October 10, 2025.</strong> Registrations must be completed through the official website before this date.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question"><span>What is the required dress code for contestants?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-answer">
+                            <p>All contestants must attend the competition dressed in the official school uniform of their respective schools.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question"><span>Can a student participate in more than one event?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-answer">
+                            <p>Generally, a contestant can only participate in one event. However, there is an exception for students competing in the short film and photography categories, who are permitted to participate in one additional event.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question"><span>What is the age requirement for the contestants?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-answer">
+                            <p>Yes, all participants must have been born after <strong>January 31, 2006.</strong> </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question"><span> How are submissions for graphic designing and short films handled?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-answer">
+                            <p>For these two categories, the final work must be uploaded to a Google Drive. The shareable link must then be submitted via the competition website before midnight on <strong>October 20, 2025.</strong></p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question"><span> Will meals be provided for the participants?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-answer">
+                            <p>No, refreshments will not be provided by the organizers. However, food and drinks will be available for purchase from food stalls on the school premises throughout the day.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="index.php" class="logo"><img src="logo.png" alt="Media Unit Logo"></a>
+            <p>&copy; 2026 The Media Unit, sri Saranankara National School, Bingiriya. All Rights Reserved.</p>
+            <p>Website designed by <strong></strong> Media.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Sticky Header ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // --- Countdown Timer ---
+            const countdownDaysEl = document.getElementById('countdown-days');
+            const countdownHoursEl = document.getElementById('countdown-hours');
+            const countdownMinutesEl = document.getElementById('countdown-minutes');
+            const countdownSecondsEl = document.getElementById('countdown-seconds');
+            const eventDate = new Date('2026-03-06T08:00:00').getTime();
+
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    countdownDaysEl.textContent = '00';
+                    countdownHoursEl.textContent = '00';
+                    countdownMinutesEl.textContent = '00';
+                    countdownSecondsEl.textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownDaysEl.textContent = String(days).padStart(2, '0');
+                countdownHoursEl.textContent = String(hours).padStart(2, '0');
+                countdownMinutesEl.textContent = String(minutes).padStart(2, '0');
+                countdownSecondsEl.textContent = String(seconds).padStart(2, '0');
+            };
+
+            const countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+
+            // --- Advanced Categories Section ---
+            const categoryData = [{
+                    id: 'announce',
+                    title: 'Colour',
+                    description: 'Engage and captivate an audience with your voice. This challenge tests your vocal prowess, confidence, and on-the-spot thinking.',
+                    skills: ['Sinhala', 'English', 'Tamil'],
+                    image: 'Colour.jpg'
+                },
+                {
+
+                    id: 'Editing',
+                    title: 'Monochrome',
+                    description: 'This is a 3-hour written examination testing your theoretical knowledge of editing principles.',
+                    skills: ['Sinhala', 'English', 'Tamil'],
+                    image: 'Monochrome.jpg'
+                },
+                {
+                    id: 'Dubbing',
+                    title: 'Nature & Wildlife',
+                    description: 'Lend your voice to characters and bring scenes to life. This category tests your vocal timing, emotional delivery, and lip-sync accuracy.',
+                    skills: ['Sinhala', 'English'],
+                    image: 'wildlife.jpg'
+                },
+                {
+                    id: 'SportsPresenting',
+                    title: 'Stret & Travel',
+                    description: 'Bring the game to life with your voice. This category tests your ability to provide dynamic, real-time commentary and insightful sports analysis.',
+                    skills: ['Sinhala', 'English'],
+                    image: 'Street.jpg'
+                },
+                {
+                    id: 'Graphic',
+                    title: 'Theme - Mobile ',
+                    description: 'Create visually stunning designs that communicate a message. This category challenges your creativity, technical skills, and understanding of design principles.',
+                    skills: ['Open Category'],
+                    image: 'mobile.jpg'
+                },
+                
+               
+
+            ];
+
+            const navContainer = document.getElementById('category-nav');
+            const displayContainer = document.getElementById('category-display');
+            const contentContainer = document.getElementById('category-content');
+
+            function updateCategoryContent(category) {
+                contentContainer.classList.add('fade-out');
+                setTimeout(() => {
+                    displayContainer.style.backgroundImage = `url('${category.image}')`;
+                    contentContainer.innerHTML = `
+                        <h3>${category.title}</h3>
+                        <p>${category.description}</p>
+                        <ul class="skills-list">
+                            ${category.skills.map(skill => `<li>${skill}</li>`).join('')}
+                        </ul>
+                    `;
+                    contentContainer.classList.remove('fade-out');
+                }, 300);
+            }
+
+            categoryData.forEach(category => {
+                const button = document.createElement('button');
+                button.className = 'category-nav-btn';
+                button.textContent = category.title;
+                button.dataset.id = category.id;
+                navContainer.appendChild(button);
+            });
+
+            navContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const activeBtn = navContainer.querySelector('.active');
+                    if (activeBtn) activeBtn.classList.remove('active');
+                    e.target.classList.add('active');
+                    const selectedCategory = categoryData.find(cat => cat.id === e.target.dataset.id);
+                    updateCategoryContent(selectedCategory);
+                }
+            });
+            // Set initial state
+            if (navContainer.querySelector('button')) {
+                navContainer.querySelector('button').classList.add('active');
+                updateCategoryContent(categoryData[0]);
+            }
+
+            // --- FAQ Accordion ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.faq-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                        currentlyActive.querySelector('.faq-answer').style.maxHeight = 0;
+                    }
+                    item.classList.toggle('active');
+                    const answer = item.querySelector('.faq-answer');
+                    answer.style.maxHeight = item.classList.contains('active') ? answer.scrollHeight + 'px' : 0;
+                });
+            });
+
+            // --- Hero Background Slideshow ---
+            const heroElement = document.querySelector('#hero');
+            const images = [
+                'img1.png',
+                'img2.png',
+                'img3.png',
+                'img4.png',
+                'img5.png'
+            ];
+            let currentIndex = 0;
+            heroElement.style.setProperty('--hero-bg-image', `url('${images[currentIndex]}')`);
+
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                const nextImage = images[currentIndex];
+                heroElement.classList.add('background-fading');
+                setTimeout(() => {
+                    heroElement.style.setProperty('--hero-bg-image', `url('SlideShow/${nextImage}')`);
+                    heroElement.classList.remove('background-fading');
+                }, 1000);
+            }, 5000);
+        });
+    </script>
+    <script src="registration.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
